@@ -1,0 +1,22 @@
+ADMIN,admin,male,admin,19,admin123,123,ADMIN
+E001,KI,male,Developer,23,qe,123,ADMIN
+E002,Jane Smith,Female,Flight Attendant,35,jsmith,jsmith456,NONE
+E003,Chris Johnson,Male,Designer,30,cjohnson,cjohnson789,NONE
+E004,Susan Brown,Female,Tester,25,sbrown,sbrown101,NONE
+E005,Michael Davis,Male,Analyst,32,mdavis,mdavis111,NONE
+E006,Karen Wilson,Female,Developer,27,kwilson,kwilson121,NONE
+E007,David Martinez,Male,Manager,45,dmartinez,dmartinez131,EMPLOYEE_MANAGER
+E008,Patricia Taylor,Female,Flight Attendant,29,ptaylor,ptaylor141,NONE
+E009,James Anderson,Male,Pilot,38,janderson,janderson151,FLIGHT_MANAGER
+E010,Linda Thomas,Female,Tester,26,lthomas,lthomas161,NONE
+E011,Robert Lee,Male,Developer,33,rlee,rlee171,NONE
+E012,Mary Harris,Female,Manager,42,mharris,mharris181,EMPLOYEE_MANAGER
+E013,William Clark,Male,Designer,31,wclark,wclark191,NONE
+E014,Barbara Lewis,Female,Flight Attendant,34,blewis,blewis201,NONE
+E015,Richard Young,Male,Analyst,40,ryoung,ryoung211,NONE
+E016,Jennifer Hall,Female,Pilot,28,jhall,jhall221,FLIGHT_MANAGER
+E017,Charles King,Male,Manager,37,cking,cking231,EMPLOYEE_MANAGER
+E018,Margaret Wright,Female,Designer,33,mwright,mwright241,NONE
+E019,Joseph Scott,Male,Tester,29,jscott,jscott251,NONE
+E022,kk,male,dev,23,hi,123,NONE
+1,1,1,1,1,1,1,NONE
