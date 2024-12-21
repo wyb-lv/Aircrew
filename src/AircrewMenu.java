@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
-public class Menu {
+public class AircrewMenu {
     private Scanner scanner;
-    public Menu(){
+
+    public AircrewMenu() {
         this.scanner = new Scanner(System.in);
     }
+
     protected void run() {
-        AircrewManagement aircrewManagement = new AircrewManagement();
+        File aircrewFile = new File();
+        AircrewManagement aircrewManagement = new AircrewManagement(aircrewFile);
+
         while (true) {
             System.out.println("==== Aircrew Management System ====");
             System.out.println("1. Create Aircrew Team");
@@ -23,7 +27,7 @@ public class Menu {
                 case 1:
                     System.out.print("Enter number of Aircrew to create: ");
                     int numberOfTeams = Integer.parseInt(scanner.nextLine());
-                    for (int i = 0; i < numberOfTeams; i++){
+                    for (int i = 0; i < numberOfTeams; i++) {
                         System.out.println("Creating Team " + (i + 1) + ":");
                         aircrewManagement.createAircrewTeam();
                     }

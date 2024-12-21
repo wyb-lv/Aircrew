@@ -16,15 +16,12 @@ public class AircrewMember {
     public String getId() {
         return id;
     }
-    public String getRole() {
-        return role;
-    }
     public String getName() {
         return name;
     }
 
     @Override
     public String toString() {
-        return "ID: " + id + ", Name: " + name + ", Role: " + role;
+        return "Name: " + name + ", Role: " + role + "\n";
     }
 }

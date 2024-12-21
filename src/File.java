@@ -1,28 +1,12 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class AircrewFile {
+public class File {
     private static final String fileAircrew = "aircrew.csv";
     private static final String fileEmployees = "employee_data.csv";
-    private Map<String, AircrewTeam> aircrewMap;
-    private List<AircrewMember> employees;
-    List<AircrewMember> pilots;
-    List<AircrewMember> attendants;
 
-    public AircrewFile() {
-        aircrewMap = new HashMap<>();
-        employees = new ArrayList<>();
-        pilots = new ArrayList<>();
-        attendants = new ArrayList<>();
-        loadAircrewFromFile();
-        loadEmployeesFromFile();
-    }
-
-    protected void loadAircrewFromFile() {
-        File file = new File(fileAircrew);
+    protected void checkFileExist(String fileName){
+        java.io.File file = new java.io.File(fileName);
         if (!file.exists()) {
             System.out.println("File does not exist. Creating a new file.");
             try {
@@ -35,6 +19,10 @@ public class AircrewFile {
                 System.out.println("Error creating file: " + e.getMessage());
             }
         }
+    }
+
+    public void loadAircrewFromFile(Map<String, AircrewTeam> aircrewMap) {
+        checkFileExist(fileAircrew);
         try (BufferedReader reader = new BufferedReader(new FileReader(fileAircrew))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -57,30 +45,8 @@ public class AircrewFile {
         }
     }
 
-    protected void saveAircrewToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileAircrew))) {
-            for (AircrewTeam team : aircrewMap.values()) {
-                writer.write(team.toCsvString());
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Error writing to file: " + e.getMessage());
-        }
-    }
-
-    protected void addAircrewTeamtoFile(AircrewTeam team) {
-        aircrewMap.put(team.getTeamID(), team);
-    }
-
-    public Map<String, AircrewTeam> getAircrewMap() {
-        return aircrewMap;
-    }
-
-    protected void removeAircrewTeam(String teamId) {
-        aircrewMap.remove(teamId);
-    }
-
-    protected void loadEmployeesFromFile() {
+    public void loadEmployeesFromFile(List<AircrewMember> pilots, List<AircrewMember> attendants) {
+        checkFileExist(fileEmployees);
         try (BufferedReader reader = new BufferedReader(new FileReader(fileEmployees))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -92,8 +58,6 @@ public class AircrewFile {
                     String role = data[3].trim();
                     int age = Integer.parseInt(data[4].trim());
                     AircrewMember member = new AircrewMember(id, name, gender, age, role);
-                    employees.add(member);
-
                     if (role.equalsIgnoreCase("Pilot")) {
                         pilots.add(member);
                     } else if (role.equalsIgnoreCase("Flight Attendant")) {
@@ -102,7 +66,18 @@ public class AircrewFile {
                 }
             }
         } catch (IOException e) {
-            System.out.println("An error occurred while reading the employee data: " + e.getMessage());
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+
+    public void saveAircrewToFile(Map<String, AircrewTeam> aircrewMap) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileAircrew))) {
+            for (AircrewTeam team : aircrewMap.values()) {
+                writer.write(team.toCsvString());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
         }
     }
 }
