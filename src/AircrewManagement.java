@@ -3,7 +3,6 @@ import java.util.*;
 public class AircrewManagement {
     private File file;
     private Scanner scanner;
-
     private Map<String, AircrewTeam> aircrewMap;
     private List<AircrewMember> pilots;
     private List<AircrewMember> attendants;
